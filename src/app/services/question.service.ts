@@ -1,8 +1,9 @@
-import { Injectable }       from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import { DropdownQuestion } from './question-dropdown';
-import { QuestionBase }     from './question-base';
-import { TextboxQuestion }  from './question-textbox';
+import { DropdownQuestion } from '../dynamic-form/question-types/question-dropdown';
+import { QuestionBase } from '../dynamic-form/question-types/question-base';
+import { TextboxQuestion } from '../dynamic-form/question-types/question-textbox';
+import { MultipleSelectQuestion } from '../dynamic-form/question-types/question-multiple-select';
 
 @Injectable()
 export class QuestionService {
@@ -33,17 +34,22 @@ export class QuestionService {
         order: 2
       }),
 
-      new TextboxQuestion({
-        key: 'keks',
-        label: 'Say Kek',
-        required: true,
-        order: 1
+      new MultipleSelectQuestion({
+        key: 'cars',
+        label: 'Cars',
+        options: [
+          {key: 'audi',  value: 'Audi'},
+          {key: 'nissan',  value: 'Nissan'},
+          {key: 'hundai',   value: 'Hundai'}
+        ],
+        order: 4
       }),
 
       new TextboxQuestion({
         key: 'emailAddress',
         label: 'Email',
         type: 'email',
+        placeholder: 'aaa@bbb.ccc',
         order: 3
       })
     ];
